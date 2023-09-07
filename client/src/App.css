@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: red;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.signIn,
+.register {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+section {
+  background-color: greenyellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+h3 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+p{
+  color: black;
+  text-decoration: none;
+}
+
+.appDescription {
+  font-size: 1.1rem;
+}
+
+.btns {
+  margin: 8px;
+}
+
+.btns,
+button {
+  margin: 5px 20px;
+  padding: 8px 20px;
+  border-radius: 2px;
+  outline: transparent;
+  cursor: pointer;
+}
+
+.formContainer {
+  width: 40%;
+  display: block;
+  margin: 0 auto;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
+.formTitle {
+  font-size: 1.4rem;
+  margin: 20px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+label {
+  text-align: start;
+  margin: 10px 0px 10px 15px;
+  font-size: 0.9rem;
+}
+
+input {
+  padding: 8px 0;
+  margin: 0 15px;
+  outline: transparent;
+}
+
+input:focus-within {
+  outline: 1px solid #36304a;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.submitBtn,
+.updateBtn {
+  margin: 30px 10px;
+  padding: 8px 0;
+  cursor: pointer;
+  border-style: none;
+  background-color: #36304a;
+  color: white;
+}
