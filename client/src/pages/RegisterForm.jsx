@@ -1,17 +1,37 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useRegisterMutation } from "../redux/slices/UserSlice";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-    return (
-      <div className="formContainer">
-      <form>
+  const navigate = useNavigate();
+  const [handleRegister, { error }] = useRegisterMutation();
+  const [name, setname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await handleRegister({ name, email, password }).unwrap();
+      navigate("/");
+      console.log(data);
+    } catch (err) {
+      console.log(err?.data?.error || error);
+    }
+  };
+
+  return (
+    <div className="formContainer">
+      <form onSubmit={handleFormSubmit}>
         <h5 className="formTitle">Create Account</h5>
         <label htmlFor="admNo">Username</label>
         <input
           type="text"
           placeholder="Username"
           id="username"
-          name="username"
-        //   onChange={(e) => setAdmNo(e.target.value)}
+          name="name"
+          value={name}
+          onChange={(e) => setname(e.target.value)}
           required
         />
 
@@ -22,7 +42,8 @@ const RegisterForm = () => {
           id="email"
           name="email"
           required
-        //   onChange={(e) => setName(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <label htmlFor="password">Password</label>
@@ -32,12 +53,13 @@ const RegisterForm = () => {
           id="password"
           name="password"
           required
-        //   onChange={(e) => setAge(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button className="submitBtn">Create Account</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;
