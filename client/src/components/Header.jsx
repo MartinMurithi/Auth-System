@@ -13,13 +13,11 @@ const Header = () => {
   const [logoutApiCall, {error}] = useLogOutMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
-  console.log(userInfo);
 
   const handleLogout = async () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(removeUserInfo());
-      console.log('logged out');
       navigate('/');
     } catch (err) {
       toast.error(err?.error || error);
@@ -38,7 +36,7 @@ const Header = () => {
           {userInfo ? (
             <>
               <p>{userInfo?.user?.name}</p>
-              <NavLink to={'/account'}>Account</NavLink>
+              <NavLink to={'/account'} className={'link'}>Account</NavLink>
               <button onClick={handleLogout}>LogOut</button>
             </>
           ) : (

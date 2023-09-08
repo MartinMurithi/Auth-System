@@ -4,37 +4,47 @@
   box-sizing: border-box;
 }
 
+/******** Header ***********/
 header {
-  background-color: red;
+  background-color: rgb(38, 138, 244);
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
+  height: 50px;
+  margin: 0 40px;
 }
 
 .rightSide {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 25px;
+}
+
+.rightSide p {
+  color: aliceblue;
 }
 
 .signIn,
-.register {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.register,
+.link,
+.logo {
+  color: aliceblue;
+  font-size: 1.1rem;
+  text-decoration: none;
 }
 
+/* *********Section ************* */
 section {
-  background-color: greenyellow;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
+  width: 65%;
+  background-color: rgb(240, 244, 255);
+  text-align: center;
+  display: block;
+  margin: auto;
+  margin-top: 80px;
+  padding: 10px 15px;
 }
 
 h3 {
@@ -42,13 +52,16 @@ h3 {
   margin: 10px 0;
 }
 
-p{
+p {
   color: black;
   text-decoration: none;
 }
 
 .appDescription {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-family: sans-serif;
+  line-height: 18px;
+  margin-bottom: 10px;
 }
 
 .btns {
@@ -64,23 +77,28 @@ button {
   cursor: pointer;
 }
 
+/* ********Forms************ */
 .formContainer {
-  width: 40%;
+  width: 60%;
   display: block;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 50px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  background-color: aliceblue;
   border-radius: 5px;
 }
 
 .formTitle {
   font-size: 1.4rem;
-  margin: 20px 0;
+  margin: 20px 0 10px 15px;
 }
 
 form {
+  width: 40%;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  background-color: rgb(243, 243, 255);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -112,6 +130,13 @@ input::-webkit-inner-spin-button {
   padding: 8px 0;
   cursor: pointer;
   border-style: none;
-  background-color: #36304a;
+  background-color: #5852ff;
   color: white;
+}
+
+p,
+.regOption,
+.logInOption {
+  font-size: 0.8rem;
+  margin-left: 13px;
 }

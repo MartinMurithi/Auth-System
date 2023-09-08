@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLogInMutation } from "../redux/slices/UserSlice";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../redux/slices/AuthSlice";
 import { toast } from "react-toastify";
@@ -63,6 +63,7 @@ const SignInForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="submitBtn">Sign In</button>
+        <p className="regOption">Don't have an account ? <NavLink to={'/register'}>Register</NavLink></p>
       </form>
     </div>
   );

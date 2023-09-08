@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRegisterMutation } from "../redux/slices/UserSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from "react-redux";
@@ -72,6 +72,7 @@ const RegisterForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="submitBtn">Create Account</button>
+        <p className="logInOption">Already have an account ? <NavLink to={'/signin'}>LogIn</NavLink></p>
       </form>
     </div>
   );
