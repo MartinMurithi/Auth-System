@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRegisterMutation } from "../redux/slices/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from "react-redux";
+import { setUserInfo } from "../redux/slices/AuthSlice";
+
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector(state => state.auth);
+
   const [handleRegister, { error }] = useRegisterMutation();
   const [name, setname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+   // Check if user is already logged in, if so, redirect to home page
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  },[userInfo,navigate]);
+  
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await handleRegister({ name, email, password }).unwrap();
-      navigate("/");
-      console.log(data);
+      await handleRegister({ name, email, password }).unwrap();
+      dispatch(setUserInfo({ name, email, password }));
+      navigate('/');
     } catch (err) {
-      console.log(err?.data?.error || error);
+      toast.error(err?.data?.error || error);
     }
   };
 

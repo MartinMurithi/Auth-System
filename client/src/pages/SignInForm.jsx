@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLogInMutation } from "../redux/slices/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserInfo } from "../redux/slices/AuthSlice";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignInForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector(state => state.auth);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [logIn, {error}] = useLogInMutation();
+  const [logIn, { error }] = useLogInMutation();
+  
+  // Check if user is already logged in, if so, redirect to home page
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  },[userInfo,navigate]);
 
   const submitForm = async (e) => {
     e.preventDefault();
     try {
       const data = await logIn({ email, password }).unwrap();
+      dispatch(setUserInfo({ ...data }));
       navigate('/');
       console.log(data);
     } catch (err) {
-      console.log(err?.data?.error || error);
+      toast.error(err?.data?.error || error);
     }
   };
 

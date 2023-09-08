@@ -5,11 +5,13 @@ import Home from "./pages/Home";
 import RegisterForm from "./pages/RegisterForm";
 import SignInForm from "./pages/SignInForm";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify"
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <ToastContainer/>
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="/register" element={ <RegisterForm /> } />
